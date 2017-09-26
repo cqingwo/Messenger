@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<EmailConfigInfo>
+    <findpwdbody>找回密码内容</findpwdbody>
+    <from>yjwwtu@163.com</from>
+    <fromname>青沃科技</fromname>
+    <host>mail.163.com</host>
+    <password>12345678</password>
+    <port>23</port>
+    <scupdatebody>安全更新</scupdatebody>
+    <scverifybody>安全中心验证邮箱内容</scverifybody>
+    <username>yjwwtu</username>
+    <webcomebody>欢迎注册</webcomebody>
+</EmailConfigInfo>

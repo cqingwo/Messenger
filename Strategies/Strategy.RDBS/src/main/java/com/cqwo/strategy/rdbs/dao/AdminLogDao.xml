@@ -1,0 +1,99 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<!--
+  ~ Copyright (C) 2017.
+  ~ 用于JAVA项目开发
+  ~ 重庆青沃科技有限公司 版权所有
+  ~ Copyright © 2017.  CqingWo Systems Incorporated. All rights reserved.
+  -->
+
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.cqwo.strategy.rdbs.dao.AdminLogDao">
+
+
+    <!--获得商城管理日志表数量-->
+    <select id="GetAdminLogCount" parameterType="String" resultType="int">
+        SELECT COUNT(logid) FROM [W_adminlogs]
+        <if test="condition != null and condition != ''">
+            WHERE #{condition}
+        </if>
+    </select>
+
+
+    <!--创建一条商城管理日志表数据-->
+    <insert id="CreateAdminLog" parameterType="com.cqwo.core.domain.AdminLogInfo">
+		INSERT INTO [W_adminlogs]( 
+		[uid],		 
+		[nickname],		 
+		[mallagid],		 
+		[mallagtitle],		 
+		[operation],		 
+		[description],		 
+		[ip],		 
+		[operatetime]		 
+		)VALUES( 
+		#{uid},		 
+		#{nickname},		 
+		#{mallagid},		 
+		#{mallagtitle},		 
+		#{operation},		 
+		#{description},		 
+		#{ip},		 
+		#{operatetime}		 
+		)  
+    </insert>
+
+
+    <!--更新一条商城管理日志表数据-->
+    <update id="UpdateAdminLog" parameterType="com.cqwo.core.domain.AdminLogInfo">
+        UPDATE [W_adminlogs] SET 
+		[uid] = #{uid},  
+		[nickname] = #{nickname},  
+		[mallagid] = #{mallagid},  
+		[mallagtitle] = #{mallagtitle},  
+		[operation] = #{operation},  
+		[description] = #{description},  
+		[ip] = #{ip},  
+		[operatetime] = #{operatetime}  
+        WHERE [logid]=@logid;
+    </update>
+
+
+    <!--删除一条商城管理日志表数据-->
+    <delete id="DeleteAdminLogByLogId" parameterType="int">
+        delete from [W_adminlogs] WHERE [logid] = #{logid}
+    </delete>
+
+
+    <!--批量删除一批商城管理日志表数据-->
+    <delete id="DeleteAdminLogByLogIdList" parameterType="String">
+        delete from [W_adminlogs] WHERE [logid] in (${logidList})
+    </delete>
+
+
+    <!--获得商城管理日志表一条记录-->
+    <select id="GetAdminLogByLogId" parameterType="int" resultType="com.cqwo.core.domain.AdminLogInfo">
+        select top 1 *  from [W_adminlogs] where [logid] = #{logid}
+    </select>
+
+
+    <!--获得获得商城管理日志表数据列表-->
+    <select id="GetAdminLogList" resultType="com.cqwo.core.domain.AdminLogInfo">
+        SELECT TOP ${pageSize} *
+        FROM [W_adminlogs]
+        WHERE [logid] NOT IN
+        (SELECT TOP ${count} [logid] FROM [W_adminlogs]
+        <if test="condition != null and condition != ''">
+            WHERE ${condition}
+        </if>
+        order by [logid])
+        <if test="condition != null and condition != ''">
+            AND ${condition}
+        </if>
+        order by [logid]
+    </select>
+
+
+</mapper>
+

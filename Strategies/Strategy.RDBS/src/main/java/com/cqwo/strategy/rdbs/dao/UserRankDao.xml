@@ -1,0 +1,94 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<!--
+  ~ Copyright (C) 2017.
+  ~ 用于JAVA项目开发
+  ~ 重庆青沃科技有限公司 版权所有
+  ~ Copyright © 2017.  CqingWo Systems Incorporated. All rights reserved.
+  -->
+
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.cqwo.strategy.rdbs.dao.UserRankDao">
+
+
+    <!--获得用户等级表数量-->
+    <select id="GetUserrankCount" parameterType="String" resultType="com.cqwo.core.domain.UserRankInfo">
+        SELECT COUNT(userrid) FROM W_userranks
+        <if test="condition != null and condition != ''">
+            WHERE #{condition}
+        </if>
+    </select>
+
+
+    <!--创建一条用户等级表数据-->
+    <insert id="CreateOauth" parameterType="com.cqwo.core.domain.UserRankInfo">
+		INSERT INTO [W_userranks]( 
+		[system],		 
+		[title],		 
+		[avatar],		 
+		[creditslower],		 
+		[creditsupper],		 
+		[limitdays]		 
+		)VALUES( 
+		#{system},		 
+		#{title},		 
+		#{avatar},		 
+		#{creditslower},		 
+		#{creditsupper},		 
+		#{limitdays}		 
+		)  
+    </insert>
+
+
+    <!--更新一条用户等级表数据-->
+    <update id="UpdateUserrank" parameterType="com.cqwo.core.domain.UserRankInfo">
+        UPDATE [W_userranks] SET 
+		[system] = #{system},  
+		[title] = #{title},  
+		[avatar] = #{avatar},  
+		[creditslower] = #{creditslower},  
+		[creditsupper] = #{creditsupper},  
+		[limitdays] = #{limitdays}  
+        WHERE [userrid]=@userrid;
+    </update>
+
+
+    <!--删除一条用户等级表数据-->
+    <delete id="DeleteUserrankByUserrId" parameterType="int">
+        delete from [W_userranks] WHERE [userrid] = #{userrid}
+    </delete>
+
+
+    <!--批量删除一批用户等级表数据-->
+    <delete id="DeleteUserrankListByUserrId" parameterType="String">
+        delete from [W_userranks] WHERE [userrid] in (#{userridList})
+    </delete>
+
+
+    <!--获得用户等级表一条记录-->
+    <select id="GetUserrankByUserrId" parameterType="int" resultType="com.cqwo.core.domain.UserRankInfo">
+        select *  from [W_userranks] where [userrid] = #{userrid}
+    </select>
+
+
+    <!--获得获得用户等级表数据列表-->
+    <select id="GetUserrankList" resultType="com.cqwo.core.domain.UserRankInfo">
+        SELECT TOP #{pageSize} *
+        FROM [W_userranks]
+        WHERE [userrid] NOT IN
+        (SELECT TOP #{count} [userrid] FROM [W_userranks]
+        <if test="condition != null and condition != ''">
+            WHERE #{condition}
+        </if>
+        order by [userrid])
+        <if test="condition != null and condition != ''">
+            AND #{condition}
+        </if>
+        order by [userrid]
+    </select>
+
+
+</mapper>
+
+

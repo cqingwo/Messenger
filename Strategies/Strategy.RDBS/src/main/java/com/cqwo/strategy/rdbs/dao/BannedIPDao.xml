@@ -1,0 +1,88 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<!--
+  ~ Copyright (C) 2017.
+  ~ 用于JAVA项目开发
+  ~ 重庆青沃科技有限公司 版权所有
+  ~ Copyright © 2017.  CqingWo Systems Incorporated. All rights reserved.
+  -->
+
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.cqwo.strategy.rdbs.dao.BannedIPDao">
+
+	<!--获得禁止ip表数量-->	
+	<select id="GetBannedIPCount"  parameterType="String" resultType="com.cqwo.core.domain.BannedIPInfo">
+        SELECT COUNT(id) FROM W_bannedip
+		<if test="condition != null and condition != ''">
+            WHERE #{condition}
+        </if>
+    </select>
+			
+	
+	<!--创建一条禁止ip表数据-->	 
+	<insert id="CreateBannedIP" parameterType="com.cqwo.core.domain.BannedIPInfo">
+		INSERT INTO [W_bannedip]( 
+		[ip],		 
+		[liftbantime]		 
+		)VALUES( 
+		#{ip},		 
+		#{liftbantime}		 
+		)  
+    </insert>
+	
+	
+	<!--更新一条禁止ip表数据-->	 
+	<update id="UpdateBannedIP" parameterType="com.cqwo.core.domain.BannedIPInfo">
+        UPDATE [W_bannedips]SET 
+		[ip] = #{ip},  
+		[liftbantime] = #{liftbantime}  
+        WHERE [id]=@id;
+    </update>
+	
+	
+
+	<!--删除一条禁止ip表数据-->	 
+    <delete id="DeleteBannedIPById" parameterType="int">
+        delete from [W_bannedips]WHERE [id] = #{id}
+    </delete>
+	
+	
+		<!--批量删除一批禁止ip表数据-->
+	<delete id="DeleteBannedIPByIdList" parameterType="String">
+        delete from [W_bannedips]WHERE [id] in (#{idList})
+    </delete>
+		
+	
+
+	<!--获得禁止ip表一条记录-->
+    <select id="GetBannedIPById" parameterType="int" resultType="com.cqwo.core.domain.BannedIPInfo">
+        select *  from [W_bannedips]where [id] = #{id}
+    </select>
+	
+	
+	<!--获得获得禁止ip表数据列表-->
+    <select id="GetBannedIPList" resultType="com.cqwo.core.domain.BannedIPInfo">
+        SELECT TOP #{pageSize} *
+        FROM  [W_bannedips]
+        WHERE [id] NOT IN
+        (SELECT TOP #{count} [id] FROM [W_bannedip]
+        <if test="condition != null and condition != ''">
+            WHERE  #{condition}
+        </if>
+        order by [id])
+        <if test="condition != null and condition != ''">
+            AND  #{condition}
+        </if>
+        order by [id]
+    </select>
+	
+
+
+
+	
+
+
+
+</mapper>
+

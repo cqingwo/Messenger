@@ -1,0 +1,69 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!--
+  ~ Copyright (C) 2017.
+  ~ 用于配置信息
+  ~ 重庆青沃科技有限公司 版权所有
+  ~ Copyright © 2017.  CqingWo Systems Incorporated. All rights reserved.
+  -->
+
+<!DOCTYPE configuration
+       PUBLIC "-//mybatis.org//DTD Config 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-config.dtd">
+<configuration>
+    <!--<properties resource="../config/RDBSConfig.properties"></properties>-->
+    <!--别名-->
+    <typeAliases>
+        <package name="com.cqwo.core.domain"/>
+    </typeAliases>
+    <!--注册类型转换
+    <typeHandlers>
+        <typeHandler handler="com.cqwo.strategy.rdbs.typehandler.UserTypeHandler"/>
+    </typeHandlers>-->
+    <!--datasource-->
+    <environments default="sqlserver">
+        <environment id="mssqlDB">
+            <transactionManager type="managed"></transactionManager>
+            <dataSource type="pooled">
+                <property name="username" value="${username}"/>
+                <property name="password" value="${password}"/>
+                <property name="url" value="jdbc:${rdbstype}://${url}:${port};database=${database}"/>
+                <property name="driver" value="${driver}"/>
+            </dataSource>
+        </environment>
+        <environment id="mssqlDB2">
+            <transactionManager type="managed"></transactionManager>
+            <dataSource type="pooled">
+                <property name="username" value="sa"/>
+                <property name="password" value="19870214?liyu"/>
+                <property name="url" value="jdbc:sqlserver://192.168.1.2:1433;database=cqingwo"/>
+                <property name="driver" value="com.microsoft.sqlserver.jdbc.SQLServerDriver"/>
+            </dataSource>
+        </environment>
+    </environments>
+    <!--mapper 配置-->
+    <mappers>
+        <mapper resource="com/cqwo/strategy/rdbs/dao/AdminActionDao.xml"/>
+        <mapper resource="com/cqwo/strategy/rdbs/dao/AdminGroupDao.xml"/>
+        <mapper resource="com/cqwo/strategy/rdbs/dao/AdminLogDao.xml"/>
+        <mapper resource="com/cqwo/strategy/rdbs/dao/AdvertDao.xml"/>
+        <mapper resource="com/cqwo/strategy/rdbs/dao/AdvertPositionDao.xml"/>
+        <mapper resource="com/cqwo/strategy/rdbs/dao/BannedIPDao.xml"/>
+        <mapper resource="com/cqwo/strategy/rdbs/dao/CreditLogDao.xml"/>
+        <mapper resource="com/cqwo/strategy/rdbs/dao/EventLogDao.xml"/>
+        <mapper resource="com/cqwo/strategy/rdbs/dao/FilterWordDao.xml"/>
+        <mapper resource="com/cqwo/strategy/rdbs/dao/FriendLinkDao.xml"/>
+        <mapper resource="com/cqwo/strategy/rdbs/dao/HelpDao.xml"/>
+        <mapper resource="com/cqwo/strategy/rdbs/dao/LoginFailLogDao.xml"/>
+        <mapper resource="com/cqwo/strategy/rdbs/dao/NavDao.xml"/>
+        <mapper resource="com/cqwo/strategy/rdbs/dao/NewDao.xml"/>
+        <mapper resource="com/cqwo/strategy/rdbs/dao/NewTypeDao.xml"/>
+        <mapper resource="com/cqwo/strategy/rdbs/dao/OauthDao.xml"/>
+        <mapper resource="com/cqwo/strategy/rdbs/dao/OnlineTimeDao.xml"/>
+        <mapper resource="com/cqwo/strategy/rdbs/dao/OnlineUserDao.xml"/>
+        <mapper resource="com/cqwo/strategy/rdbs/dao/PvStatDao.xml"/>
+        <mapper resource="com/cqwo/strategy/rdbs/dao/RegionDao.xml"/>
+        <mapper resource="com/cqwo/strategy/rdbs/dao/UserDao.xml"/>
+        <mapper resource="com/cqwo/strategy/rdbs/dao/UserDetailDao.xml"/>
+        <mapper resource="com/cqwo/strategy/rdbs/dao/UserRankDao.xml"/>
+    </mappers>
+</configuration>

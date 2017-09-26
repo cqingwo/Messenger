@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<SMSConfigInfo>
+    <account>huilianadmin</account>
+    <findpwdbody>找回密码{mallname}{code}</findpwdbody>
+    <password>19870214?liyu</password>
+    <sctraverifybody>安全中心验证校验码{code}</sctraverifybody>
+    <scupdatebody>安全中心更新手机校验码{poname}{code}</scupdatebody>
+    <scverifybody>安全中心验证校验码{code}</scverifybody>
+    <sign>惠联商务</sign>
+    <url>http://sms.ht3g.com/sms.aspx</url>
+    <userid>305</userid>
+    <webcomebody>欢迎注册{mallname}{regtime}{mobile}</webcomebody>
+</SMSConfigInfo>

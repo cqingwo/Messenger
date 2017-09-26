@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="GitSharedSettings">
+    <option name="FORCE_PUSH_PROHIBITED_PATTERNS">
+      <list>
+        <option value="Messenger" />
+      </list>
+    </option>
+  </component>
+  <component name="VcsDirectoryMappings">
+    <mapping directory="$PROJECT_DIR$" vcs="Git" />
+    <mapping directory="$PROJECT_DIR$/Libraries/Core" vcs="svn" />
+    <mapping directory="$PROJECT_DIR$/Libraries/Data" vcs="svn" />
+    <mapping directory="$PROJECT_DIR$/Libraries/Services" vcs="svn" />
+    <mapping directory="$PROJECT_DIR$/Presentation/Web" vcs="svn" />
+    <mapping directory="$PROJECT_DIR$/Presentation/Web.Admin" vcs="svn" />
+    <mapping directory="$PROJECT_DIR$/Presentation/Web.Framework" vcs="svn" />
+    <mapping directory="$PROJECT_DIR$/Presentation/Web.Mobile" vcs="svn" />
+    <mapping directory="$PROJECT_DIR$/Strategies/Strategy.Cache" vcs="svn" />
+    <mapping directory="$PROJECT_DIR$/Strategies/Strategy.Config" vcs="svn" />
+    <mapping directory="$PROJECT_DIR$/Strategies/Strategy.Email" vcs="svn" />
+    <mapping directory="$PROJECT_DIR$/Strategies/Strategy.Log" vcs="svn" />
+    <mapping directory="$PROJECT_DIR$/Strategies/Strategy.RDBS" vcs="svn" />
+    <mapping directory="$PROJECT_DIR$/Strategies/Strategy.SMS" vcs="svn" />
+    <mapping directory="$PROJECT_DIR$/Strategies/Strategy.Session" vcs="svn" />
+  </component>
+</project>

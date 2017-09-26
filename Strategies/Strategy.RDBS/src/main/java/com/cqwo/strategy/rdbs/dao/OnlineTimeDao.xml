@@ -1,0 +1,94 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<!--
+  ~ Copyright (C) 2017.
+  ~ 用于JAVA项目开发
+  ~ 重庆青沃科技有限公司 版权所有
+  ~ Copyright © 2017.  CqingWo Systems Incorporated. All rights reserved.
+  -->
+
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.cqwo.strategy.rdbs.dao.OnlineTimeDao">
+
+
+    <!--获得在线时间表数量-->
+    <select id="GetOnlinetimeCount" parameterType="String" resultType="com.cqwo.core.domain.OnlineTimeInfo">
+        SELECT COUNT(uid) FROM W_onlinetime
+        <if test="condition != null and condition != ''">
+            WHERE #{condition}
+        </if>
+    </select>
+
+
+    <!--创建一条在线时间表数据-->
+    <insert id="CreateOauth" parameterType="com.cqwo.core.domain.OnlineTimeInfo">
+		INSERT INTO [W_onlinetime]( 
+		[total],		 
+		[year],		 
+		[month],		 
+		[week],		 
+		[day],		 
+		[updatetime]		 
+		)VALUES( 
+		#{total},		 
+		#{year},		 
+		#{month},		 
+		#{week},		 
+		#{day},		 
+		#{updatetime}		 
+		)  
+    </insert>
+
+
+    <!--更新一条在线时间表数据-->
+    <update id="UpdateOnlinetime" parameterType="com.cqwo.core.domain.OnlineTimeInfo">
+        UPDATE [W_onlinetime] SET 
+		[total] = #{total},  
+		[year] = #{year},  
+		[month] = #{month},  
+		[week] = #{week},  
+		[day] = #{day},  
+		[updatetime] = #{updatetime}  
+        WHERE [uid]=@uid;
+    </update>
+
+
+    <!--删除一条在线时间表数据-->
+    <delete id="DeleteOnlinetimeByUid" parameterType="int">
+        delete from [W_onlinetime] WHERE [uid] = #{uid}
+    </delete>
+
+
+    <!--批量删除一批在线时间表数据-->
+    <delete id="DeleteOnlinetimeListByUid" parameterType="String">
+        delete from [W_onlinetime] WHERE [uid] in (#{uidList})
+    </delete>
+
+
+    <!--获得在线时间表一条记录-->
+    <select id="GetOnlinetimeByUid" parameterType="int" resultType="com.cqwo.core.domain.OnlineTimeInfo">
+        select *  from [W_onlinetime] where [uid] = #{uid}
+    </select>
+
+
+    <!--获得获得在线时间表数据列表-->
+    <select id="GetOnlinetimeList" resultType="com.cqwo.core.domain.OnlineTimeInfo">
+        SELECT TOP #{pageSize} *
+        FROM [W_onlinetime]
+        WHERE [uid] NOT IN
+        (SELECT TOP #{count} [uid] FROM [W_onlinetime]
+        <if test="condition != null and condition != ''">
+            WHERE #{condition}
+        </if>
+        order by [uid])
+        <if test="condition != null and condition != ''">
+            AND #{condition}
+        </if>
+        order by [uid]
+    </select>
+
+
+</mapper>
+
+

@@ -1,0 +1,78 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.cqwo.strategy.rdbs.dao.OauthDao">
+
+
+    <!--获得开放授权表数量-->
+    <select id="GetOauthCount" parameterType="String" resultType="com.cqwo.core.domain.OauthInfo">
+        SELECT COUNT(id) FROM W_oauth
+        <if test="condition != null and condition != ''">
+            WHERE #{condition}
+        </if>
+    </select>
+
+
+    <!--创建一条开放授权表数据-->
+    <insert id="CreateOauth" parameterType="com.cqwo.core.domain.OauthInfo">
+		INSERT INTO [W_oauth]( 
+		[uid],		 
+		[openid],		 
+		[server]		 
+		)VALUES( 
+		#{uid},		 
+		#{openid},		 
+		#{server}		 
+		)  
+    </insert>
+
+
+    <!--更新一条开放授权表数据-->
+    <update id="UpdateOauth" parameterType="com.cqwo.core.domain.OauthInfo">
+        UPDATE [W_oauth] SET 
+		[uid] = #{uid},  
+		[openid] = #{openid},  
+		[server] = #{server}  
+        WHERE [id]=@id;
+    </update>
+
+
+    <!--删除一条开放授权表数据-->
+    <delete id="DeleteOauthById" parameterType="int">
+        delete from [W_oauth] WHERE [id] = #{id}
+    </delete>
+
+
+    <!--批量删除一批开放授权表数据-->
+    <delete id="DeleteOauthListById" parameterType="String">
+        delete from [W_oauth] WHERE [id] in (#{idList})
+    </delete>
+
+
+    <!--获得开放授权表一条记录-->
+    <select id="GetOauthById" parameterType="int" resultType="com.cqwo.core.domain.OauthInfo">
+        select *  from [W_oauth] where [id] = #{id}
+    </select>
+
+
+    <!--获得获得开放授权表数据列表-->
+    <select id="GetOauthList" resultType="com.cqwo.core.domain.OauthInfo">
+        SELECT TOP #{pageSize} *
+        FROM [W_oauth]
+        WHERE [id] NOT IN
+        (SELECT TOP #{count} [id] FROM [W_oauth]
+        <if test="condition != null and condition != ''">
+            WHERE #{condition}
+        </if>
+        order by [id])
+        <if test="condition != null and condition != ''">
+            AND #{condition}
+        </if>
+        order by [id]
+    </select>
+
+
+</mapper>
+
+

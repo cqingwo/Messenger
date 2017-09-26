@@ -1,0 +1,56 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<BaseConfigInfo>
+    <adminallowaccessip></adminallowaccessip>
+    <allowaccessip></allowaccessip>
+    <allowemailprovider></allowemailprovider>
+    <banaccessip></banaccessip>
+    <banaccesstime></banaccesstime>
+    <banemailprovider></banemailprovider>
+    <closereason></closereason>
+    <cookiedomain></cookiedomain>
+    <csscdn></csscdn>
+    <icp>渝ICP备15003647号</icp>
+    <ignorewords></ignorewords>
+    <imagecdn></imagecdn>
+    <isclosed>0</isclosed>
+    <islicensed>1</islicensed>
+    <isremember>1</isremember>
+    <isstatbrowser>1</isstatbrowser>
+    <isstatos>1</isstatos>
+    <isstatregion>1</isstatregion>
+    <iswebcomemsg>0</iswebcomemsg>
+    <loginfailtimes>0</loginfailtimes>
+    <logintype>3</logintype>
+    <mallname>青沃微云</mallname>
+    <maxonlinecount>1000</maxonlinecount>
+    <onlinecountexpire>5</onlinecountexpire>
+    <onlineuserexpire>10</onlineuserexpire>
+    <randomlibrary></randomlibrary>
+    <regtimespan>0</regtimespan>
+    <regtype>3</regtype>
+    <reservedname>cqnews,admin,master,administrator,yjwwtu,liuyang,laijie</reservedname>
+    <script></script>
+    <scriptcdn></scriptcdn>
+    <secretkey>12345678</secretkey>
+    <seodescription>青沃科技</seodescription>
+    <seokeyword>青沃科技</seokeyword>
+    <shadowname>shadname</shadowname>
+    <sitetitle>青沃科技</sitetitle>
+    <siteurl>http://www.cqwo.com</siteurl>
+    <updateonlinetimespan>5</updateonlinetimespan>
+    <uploadfilesize>22</uploadfilesize>
+    <uploadfiletype></uploadfiletype>
+    <uploadimgsize>22</uploadimgsize>
+    <uploadimgtype></uploadimgtype>
+    <uploadserver></uploadserver>
+    <verifypages></verifypages>
+    <watermarkimg>watermark.png</watermarkimg>
+    <watermarkimgopacity>0</watermarkimgopacity>
+    <watermarkposition>9</watermarkposition>
+    <watermarkquality>0</watermarkquality>
+    <watermarktext>青沃科技</watermarktext>
+    <watermarktextfont>Microsoft Yahei</watermarktextfont>
+    <watermarktextsize>14</watermarktextsize>
+    <watermarktype>0</watermarktype>
+    <webcomemsg>欢迎来到我们的网站</webcomemsg>
+</BaseConfigInfo>

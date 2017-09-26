@@ -1,0 +1,117 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<!--
+  ~ Copyright (C) 2017.
+  ~ 用于JAVA项目开发
+  ~ 重庆青沃科技有限公司 版权所有
+  ~ Copyright © 2017.  CqingWo Systems Incorporated. All rights reserved.
+  -->
+
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.cqwo.strategy.rdbs.dao.AdvertDao">
+
+		 
+	
+	<!--获得广告表数量-->	
+	<select id="GetAdvertCount"  parameterType="String" resultType="int">
+        SELECT COUNT(adid) FROM [W_adverts]
+		<if test="condition != null and condition != ''">
+            WHERE ${condition}
+        </if>
+    </select>
+			
+	
+	<!--创建一条广告表数据-->	 
+	<insert id="CreateAdvert" parameterType="com.cqwo.core.domain.AdvertInfo">
+		INSERT INTO [W_adverts](
+		[clickcount],		 
+		[adposid],		 
+		[state],		 
+		[starttime],		 
+		[endtime],		 
+		[displayorder],		 
+		[title],		 
+		[image],		 
+		[url],		 
+		[extfield1],		 
+		[extfield2],		 
+		[extfield3],		 
+		[extfield4],		 
+		[extfield5]		 
+		)VALUES( 
+		#{clickcount},		 
+		#{adposid},		 
+		#{state},		 
+		#{starttime},		 
+		#{endtime},		 
+		#{displayorder},		 
+		#{title},		 
+		#{image},		 
+		#{url},		 
+		#{extfield1},		 
+		#{extfield2},		 
+		#{extfield3},		 
+		#{extfield4},		 
+		#{extfield5}		 
+		)  
+    </insert>
+	
+	
+	<!--更新一条广告表数据-->	 
+	<update id="UpdateAdvert" parameterType="com.cqwo.core.domain.AdvertInfo">
+        UPDATE [W_adverts] SET 
+		[clickcount] = #{clickcount},  
+		[adposid] = #{adposid},  
+		[state] = #{state},  
+		[starttime] = #{starttime},  
+		[endtime] = #{endtime},  
+		[displayorder] = #{displayorder},  
+		[title] = #{title},  
+		[image] = #{image},  
+		[url] = #{url},  
+		[extfield1] = #{extfield1},  
+		[extfield2] = #{extfield2},  
+		[extfield3] = #{extfield3},  
+		[extfield4] = #{extfield4},  
+		[extfield5] = #{extfield5}  
+        WHERE [adid]=@adid;
+    </update>
+	
+	
+
+	<!--删除一条广告表数据-->	 
+    <delete id="DeleteAdvertByAdId" parameterType="int">
+        delete from [W_adverts] WHERE [adid] = #{adid}
+    </delete>
+
+	<!--删除一条广告表数据-->
+	<delete id="DeleteAdvertByAdIdList" parameterType="String">
+		delete from [W_adverts] WHERE [adid] in (${adidList})
+	</delete>
+	
+
+	<!--获得广告表一条记录-->
+    <select id="GetAdvertByAdId" parameterType="int" resultType="com.cqwo.core.domain.AdvertInfo">
+        select *  from [W_adverts] where [adid] = #{adid}
+    </select>
+	
+	
+	<!--获得获得广告表数据列表-->
+    <select id="GetAdvertList" resultType="com.cqwo.core.domain.AdvertInfo">
+        SELECT TOP ${pageSize} *
+        FROM  [W_adverts] 
+        WHERE [adid] NOT IN
+        (SELECT TOP ${count} [adid] FROM [W_advert]
+        <if test="condition != null and condition != ''">
+            WHERE  #{condition}
+        </if>
+        order by [adid])
+        <if test="condition != null and condition != ''">
+            AND  #{condition}
+        </if>
+        order by [adid]
+    </select>
+
+</mapper>
+

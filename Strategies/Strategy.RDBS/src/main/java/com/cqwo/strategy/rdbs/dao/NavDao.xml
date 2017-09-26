@@ -1,0 +1,96 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<!--
+  ~ Copyright (C) 2017.
+  ~ 用于JAVA项目开发
+  ~ 重庆青沃科技有限公司 版权所有
+  ~ Copyright © 2017.  CqingWo Systems Incorporated. All rights reserved.
+  -->
+
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.cqwo.strategy.rdbs.dao.NavDao">
+
+
+    <!--获得导航表数量-->
+    <select id="GetNavCount" parameterType="String" resultType="com.cqwo.core.domain.NavInfo">
+        SELECT COUNT(id) FROM W_navs
+        <if test="condition != null and condition != ''">
+            WHERE #{condition}
+        </if>
+    </select>
+
+
+    <!--创建一条导航表数据-->
+    <insert id="CreateOauth" parameterType="com.cqwo.core.domain.NavInfo">
+		INSERT INTO [W_navs](
+		[pid],		 
+		[layer],		 
+		[name],		 
+		[title],		 
+		[url],		 
+		[target],		 
+		[displayorder]		 
+		)VALUES( 
+		#{pid},		 
+		#{layer},		 
+		#{name},		 
+		#{title},		 
+		#{url},		 
+		#{target},		 
+		#{displayorder}		 
+		)  
+    </insert>
+
+
+    <!--更新一条导航表数据-->
+    <update id="UpdateNav" parameterType="com.cqwo.core.domain.NavInfo">
+        UPDATE [W_navs] SET 
+		[pid] = #{pid},  
+		[layer] = #{layer},  
+		[name] = #{name},  
+		[title] = #{title},  
+		[url] = #{url},  
+		[target] = #{target},  
+		[displayorder] = #{displayorder}  
+        WHERE [id]=@id;
+    </update>
+
+
+    <!--删除一条导航表数据-->
+    <delete id="DeleteNavById" parameterType="int">
+        delete from [W_navs] WHERE [id] = #{id}
+    </delete>
+
+
+    <!--批量删除一批导航表数据-->
+    <delete id="DeleteNavListById" parameterType="String">
+        delete from [W_navs] WHERE [id] in (#{idList})
+    </delete>
+
+
+    <!--获得导航表一条记录-->
+    <select id="GetNavById" parameterType="int" resultType="com.cqwo.core.domain.NavInfo">
+        select *  from [W_navs] where [id] = #{id}
+    </select>
+
+
+    <!--获得获得导航表数据列表-->
+    <select id="GetNavList" resultType="com.cqwo.core.domain.NavInfo">
+        SELECT TOP #{pageSize} *
+        FROM [W_navs]
+        WHERE [id] NOT IN
+        (SELECT TOP #{count} [id] FROM [W_navs]
+        <if test="condition != null and condition != ''">
+            WHERE #{condition}
+        </if>
+        order by [id])
+        <if test="condition != null and condition != ''">
+            AND #{condition}
+        </if>
+        order by [id]
+    </select>
+
+</mapper>
+
+

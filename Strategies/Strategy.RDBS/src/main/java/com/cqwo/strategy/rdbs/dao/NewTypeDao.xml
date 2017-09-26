@@ -1,0 +1,82 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<!--
+  ~ Copyright (C) 2017.
+  ~ 用于JAVA项目开发
+  ~ 重庆青沃科技有限公司 版权所有
+  ~ Copyright © 2017.  CqingWo Systems Incorporated. All rights reserved.
+  -->
+
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.cqwo.strategy.rdbs.dao.NewTypeDao">
+
+
+    <!--获得新闻类型表数量-->
+    <select id="GetNewtypeCount" parameterType="String" resultType="com.cqwo.core.domain.NewTypeInfo">
+        SELECT COUNT(newtypeid) FROM W_newtypes
+        <if test="condition != null and condition != ''">
+            WHERE #{condition}
+        </if>
+    </select>
+
+
+    <!--创建一条新闻类型表数据-->
+    <insert id="CreateOauth" parameterType="com.cqwo.core.domain.NewTypeInfo">
+		INSERT INTO [W_newtypes]( 
+		[name],		 
+		[displayorder]		 
+		)VALUES( 
+		#{name},		 
+		#{displayorder}		 
+		)  
+    </insert>
+
+
+    <!--更新一条新闻类型表数据-->
+    <update id="UpdateNewtype" parameterType="com.cqwo.core.domain.NewTypeInfo">
+        UPDATE [W_newtypes] SET 
+		[name] = #{name},  
+		[displayorder] = #{displayorder}  
+        WHERE [newtypeid]=@newtypeid;
+    </update>
+
+
+    <!--删除一条新闻类型表数据-->
+    <delete id="DeleteNewtypeByNewtypeId" parameterType="int">
+        delete from [W_newtypes] WHERE [newtypeid] = #{newtypeid}
+    </delete>
+
+
+    <!--批量删除一批新闻类型表数据-->
+    <delete id="DeleteNewtypeListByNewtypeId" parameterType="String">
+        delete from [W_newtypes] WHERE [newtypeid] in (#{newtypeidList})
+    </delete>
+
+
+    <!--获得新闻类型表一条记录-->
+    <select id="GetNewtypeByNewtypeId" parameterType="int" resultType="com.cqwo.core.domain.NewTypeInfo">
+        select *  from [W_newtypes] where [newtypeid] = #{newtypeid}
+    </select>
+
+
+    <!--获得获得新闻类型表数据列表-->
+    <select id="GetNewtypeList" resultType="com.cqwo.core.domain.NewTypeInfo">
+        SELECT TOP #{pageSize} *
+        FROM [W_newtypes]
+        WHERE [newtypeid] NOT IN
+        (SELECT TOP #{count} [newtypeid] FROM [W_newtypes]
+        <if test="condition != null and condition != ''">
+            WHERE #{condition}
+        </if>
+        order by [newtypeid])
+        <if test="condition != null and condition != ''">
+            AND #{condition}
+        </if>
+        order by [newtypeid]
+    </select>
+
+
+</mapper>
+
+

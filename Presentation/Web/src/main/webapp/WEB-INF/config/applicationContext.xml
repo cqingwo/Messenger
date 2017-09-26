@@ -1,0 +1,76 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+       xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+       xmlns:context="http://www.springframework.org/schema/context"
+       xmlns:aop="http://www.springframework.org/schema/aop"
+       xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd http://www.springframework.org/schema/context http://www.springframework.org/schema/context/spring-context.xsd   http://www.springframework.org/schema/aop http://www.springframework.org/schema/aop/spring-aop.xsd">
+
+
+
+    <aop:aspectj-autoproxy></aop:aspectj-autoproxy>
+
+
+    <!--缓存策略-->
+    <bean id="CacheStrategy" class="com.cqwo.strategy.cache.CacheStrategy"/>
+    <bean id="CWMCache" class="com.cqwo.core.cache.CWMCache">
+        <property name="icachestrategy" ref="CacheStrategy"/>
+    </bean>
+
+    <!--RDBS策略-->
+    <bean id="UserStrategy" class="com.cqwo.strategy.rdbs.service.UserService"/>
+
+    <bean id="BaseStrategy" class="com.cqwo.strategy.rdbs.service.BaseStrategy"/>
+
+    <bean id="RDBSStrategy" class="com.cqwo.core.data.rdbs.RDBSStrategy">
+        <property name="iUserStrategy" ref="UserStrategy"/>
+        <property name="iBaseStrategy" ref="BaseStrategy"/>
+    </bean>
+    <bean id="CWMData" class="com.cqwo.core.data.CWMData">
+        <property name="irdbsStrategy" ref="RDBSStrategy"/>
+    </bean>
+
+    <!--短信策略-->
+    <bean id="SessionStrategy" class="com.cqwo.strategy.session.SessionStrategy"/>
+    <bean id="CWMSession" class="com.cqwo.core.session.CWMSession">
+        <property name="iSessionStrategy" ref="SessionStrategy"/>
+    </bean>
+
+
+    <!--配置-->
+    <bean id="ConfigStrategy" class="com.cqwo.strategy.config.ConfigStrategy"></bean>
+    <bean id="CWMConfig" class="com.cqwo.core.config.CWMConfig">
+        <property name="iconfigstrategy" ref="ConfigStrategy"></property>
+    </bean>
+
+    <!--LOG-->
+    <bean id="LogStrategy" class="com.cqwo.strategy.log.LogStrategy"></bean>
+    <bean id="CWMLog" class="com.cqwo.core.log.CWMLog">
+        <property name="iLogStrategy" ref="LogStrategy"></property>
+    </bean>
+
+    <!--短信策略-->
+    <bean id="SMSStrategy" class="com.cqwo.strategy.sms.SMSStrategy">
+        <property name="cwmConfig" ref="CWMConfig"></property>
+    </bean>
+    <bean id="CWMSMS" class="com.cqwo.core.sms.CWMSMS">
+        <property name="ismsStrategy" ref="SMSStrategy"/>
+    </bean>
+
+    <!---->
+    <bean id="EmailStrategy" class="com.cqwo.strategy.email.EmailStrategy">
+        <property name="cwmConfig" ref="CWMConfig"></property>
+    </bean>
+    <bean id="CWMEmail" class="com.cqwo.core.email.CWMEmail">
+        <property name="iEmailStrategy" ref="EmailStrategy"></property>
+    </bean>
+
+    <context:component-scan base-package="com.cqwo.data"/>
+
+    <context:component-scan base-package="com.cqwo.services"/>
+
+    <import resource="CacheManager.xml"></import>
+
+    <import resource="QuartzManager.xml"></import>
+
+    <!--import resource="DbHelper.xml"></import-->
+</beans>

@@ -1,0 +1,88 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<!--
+  ~ Copyright (C) 2017.
+  ~ 用于JAVA项目开发
+  ~ 重庆青沃科技有限公司 版权所有
+  ~ Copyright © 2017.  CqingWo Systems Incorporated. All rights reserved.
+  -->
+
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.cqwo.strategy.rdbs.dao.PvStatDao">
+
+
+    <!--获得pv统计表数量-->
+    <select id="GetPvstatCount" parameterType="String" resultType="com.cqwo.core.domain.PvstatInfo">
+        SELECT COUNT(recordid) FROM W_pvstats
+        <if test="condition != null and condition != ''">
+            WHERE #{condition}
+        </if>
+    </select>
+
+
+    <!--创建一条pv统计表数据-->
+    <insert id="CreateOauth" parameterType="com.cqwo.core.domain.PvstatInfo">
+		INSERT INTO [W_pvstats]( 
+		[storeid],		 
+		[category],		 
+		[value],		 
+		[count]		 
+		)VALUES( 
+		#{storeid},		 
+		#{category},		 
+		#{value},		 
+		#{count}		 
+		)  
+    </insert>
+
+
+    <!--更新一条pv统计表数据-->
+    <update id="UpdatePvstat" parameterType="com.cqwo.core.domain.PvstatInfo">
+        UPDATE [W_pvstats] SET 
+		[storeid] = #{storeid},  
+		[category] = #{category},  
+		[value] = #{value},  
+		[count] = #{count}  
+        WHERE [recordid]=@recordid;
+    </update>
+
+
+    <!--删除一条pv统计表数据-->
+    <delete id="DeletePvstatByRecordId" parameterType="int">
+        delete from [W_pvstats] WHERE [recordid] = #{recordid}
+    </delete>
+
+
+    <!--批量删除一批pv统计表数据-->
+    <delete id="DeletePvstatListByRecordId" parameterType="String">
+        delete from [W_pvstats] WHERE [recordid] in (#{recordidList})
+    </delete>
+
+
+    <!--获得pv统计表一条记录-->
+    <select id="GetPvstatByRecordId" parameterType="int" resultType="com.cqwo.core.domain.PvstatInfo">
+        select *  from [W_pvstats] where [recordid] = #{recordid}
+    </select>
+
+
+    <!--获得获得pv统计表数据列表-->
+    <select id="GetPvstatList" resultType="com.cqwo.core.domain.PvstatInfo">
+        SELECT TOP #{pageSize} *
+        FROM [W_pvstats]
+        WHERE [recordid] NOT IN
+        (SELECT TOP #{count} [recordid] FROM [W_pvstats]
+        <if test="condition != null and condition != ''">
+            WHERE #{condition}
+        </if>
+        order by [recordid])
+        <if test="condition != null and condition != ''">
+            AND #{condition}
+        </if>
+        order by [recordid]
+    </select>
+
+
+</mapper>
+
+

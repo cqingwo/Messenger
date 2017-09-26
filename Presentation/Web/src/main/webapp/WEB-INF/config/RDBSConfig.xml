@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<RDBSConfigInfo>
+    <database>cqingwo</database>
+    <driver>com.microsoft.sqlserver.jdbc.SQLServerDriver</driver>
+    <password>123456789</password>
+    <port>1433</port>
+    <rdbstype>sqlserver</rdbstype>
+    <url>192.168.1.2:1433</url>
+    <username>sa</username>
+</RDBSConfigInfo>

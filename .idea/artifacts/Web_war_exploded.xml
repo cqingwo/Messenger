@@ -1,0 +1,125 @@
+<component name="ArtifactManager">
+  <artifact type="exploded-war" name="Web:war exploded">
+    <output-path>$PROJECT_DIR$/Presentation/Web/target/Web</output-path>
+    <root id="root">
+      <element id="directory" name="WEB-INF">
+        <element id="directory" name="classes">
+          <element id="module-output" name="Web" />
+        </element>
+        <element id="directory" name="lib">
+          <element id="library" level="project" name="Maven: junit:junit:4.8" />
+          <element id="library" level="project" name="Maven: org.springframework:spring-core:4.3.0.RELEASE" />
+          <element id="library" level="project" name="Maven: commons-logging:commons-logging:1.2" />
+          <element id="library" level="project" name="Maven: org.springframework:spring-context:4.3.0.RELEASE" />
+          <element id="library" level="project" name="Maven: org.springframework:spring-aop:4.3.0.RELEASE" />
+          <element id="library" level="project" name="Maven: org.springframework:spring-beans:4.3.0.RELEASE" />
+          <element id="library" level="project" name="Maven: org.springframework:spring-expression:4.3.0.RELEASE" />
+          <element id="library" level="project" name="Maven: org.springframework:spring-webmvc:4.3.0.RELEASE" />
+          <element id="library" level="project" name="Maven: org.springframework:spring-web:4.3.0.RELEASE" />
+          <element id="library" level="project" name="Maven: org.springframework:spring-context-support:4.3.0.RELEASE" />
+          <element id="library" level="project" name="Maven: org.springframework:spring-aspects:4.3.0.RELEASE" />
+          <element id="library" level="project" name="Maven: org.aspectj:aspectjweaver:1.8.9" />
+          <element id="library" level="project" name="Maven: org.springframework:spring-tx:4.3.0.RELEASE" />
+          <element id="library" level="project" name="Maven: org.springframework:spring-jdbc:4.3.0.RELEASE" />
+          <element id="library" level="project" name="Maven: org.quartz-scheduler:quartz:2.2.1" />
+          <element id="library" level="project" name="Maven: c3p0:c3p0:0.9.1.1" />
+          <element id="library" level="project" name="Maven: org.aspectj:aspectjrt:1.6.12" />
+          <element id="library" level="project" name="Maven: org.slf4j:slf4j-api:1.7.5" />
+          <element id="library" level="project" name="Maven: com.opensource:dbhelper:1.0.1" />
+          <element id="library" level="project" name="Maven: com.mchange:c3p0:0.9.5.2" />
+          <element id="library" level="project" name="Maven: com.mchange:mchange-commons-java:0.2.11" />
+          <element id="library" level="project" name="Maven: org.apache.commons:commons-lang3:3.5" />
+          <element id="library" level="project" name="Maven: com.alibaba:druid:1.0.4" />
+          <element id="library" level="project" name="Maven: com.github.penggle:kaptcha:2.3.2" />
+          <element id="library" level="project" name="Maven: javax.servlet:javax.servlet-api:3.1.0" />
+          <element id="library" level="project" name="Maven: com.jhlabs:filters:2.0.235-1" />
+          <element id="archive" name="Web.Framework-1.0-SNAPSHOT.jar">
+            <element id="module-output" name="Web.Framework" />
+          </element>
+          <element id="archive" name="Web.Mobile-1.0-SNAPSHOT.jar">
+            <element id="module-output" name="Web.Mobile" />
+          </element>
+          <element id="archive" name="Web.Admin-1.0-SNAPSHOT.jar">
+            <element id="module-output" name="Web.Admin" />
+          </element>
+          <element id="archive" name="Core-1.0-SNAPSHOT.jar">
+            <element id="module-output" name="Core" />
+          </element>
+          <element id="library" level="project" name="Maven: org.slf4j:slf4j-log4j12:1.7.5" />
+          <element id="library" level="project" name="Maven: dom4j:dom4j:1.6.1" />
+          <element id="library" level="project" name="Maven: xml-apis:xml-apis:1.0.b2" />
+          <element id="library" level="project" name="Maven: log4j:log4j:1.2.17" />
+          <element id="library" level="project" name="Maven: org.jetbrains:annotations:15.0" />
+          <element id="library" level="project" name="Maven: commons-beanutils:commons-beanutils:1.9.3" />
+          <element id="library" level="project" name="Maven: commons-collections:commons-collections:3.2.2" />
+          <element id="library" level="project" name="Maven: org.apache.httpcomponents:httpcore:4.3.3" />
+          <element id="library" level="project" name="Maven: com.nimbusds:oauth2-oidc-sdk:4.5" />
+          <element id="library" level="project" name="Maven: javax.mail:mail:1.4.7" />
+          <element id="library" level="project" name="Maven: javax.activation:activation:1.1" />
+          <element id="library" level="project" name="Maven: net.jcip:jcip-annotations:1.0" />
+          <element id="library" level="project" name="Maven: net.minidev:json-smart:1.1.1" />
+          <element id="library" level="project" name="Maven: com.nimbusds:lang-tag:1.4" />
+          <element id="library" level="project" name="Maven: com.nimbusds:nimbus-jose-jwt:3.1.2" />
+          <element id="library" level="project" name="Maven: org.bouncycastle:bcprov-jdk15on:1.51" />
+          <element id="library" level="project" name="Maven: org.apache.httpcomponents:httpclient:4.3.6" />
+          <element id="library" level="project" name="Maven: com.belerweb:pinyin4j:2.5.0" />
+          <element id="archive" name="Strategy.RDBS-1.0-SNAPSHOT.jar">
+            <element id="module-output" name="Strategy.RDBS" />
+          </element>
+          <element id="library" level="project" name="Maven: org.mybatis:mybatis:3.4.1" />
+          <element id="library" level="project" name="Maven: com.microsoft.sqlserver:sqljdbc4:4.0" />
+          <element id="library" level="project" name="Maven: com.microsoft.sqlserver:mssql-jdbc:6.1.0.jre8" />
+          <element id="library" level="project" name="Maven: com.microsoft.azure:azure-keyvault:0.9.3" />
+          <element id="library" level="project" name="Maven: com.microsoft.azure:azure-core:0.9.3" />
+          <element id="library" level="project" name="Maven: commons-codec:commons-codec:1.10" />
+          <element id="library" level="project" name="Maven: commons-lang:commons-lang:2.6" />
+          <element id="library" level="project" name="Maven: com.sun.jersey:jersey-client:1.13" />
+          <element id="library" level="project" name="Maven: com.sun.jersey:jersey-core:1.13" />
+          <element id="library" level="project" name="Maven: com.sun.jersey:jersey-json:1.13" />
+          <element id="library" level="project" name="Maven: org.codehaus.jettison:jettison:1.1" />
+          <element id="library" level="project" name="Maven: stax:stax-api:1.0.1" />
+          <element id="library" level="project" name="Maven: com.sun.xml.bind:jaxb-impl:2.2.3-1" />
+          <element id="library" level="project" name="Maven: javax.xml.bind:jaxb-api:2.2.2" />
+          <element id="library" level="project" name="Maven: javax.xml.stream:stax-api:1.0-2" />
+          <element id="library" level="project" name="Maven: org.codehaus.jackson:jackson-core-asl:1.9.2" />
+          <element id="library" level="project" name="Maven: org.codehaus.jackson:jackson-mapper-asl:1.9.2" />
+          <element id="library" level="project" name="Maven: org.codehaus.jackson:jackson-jaxrs:1.9.2" />
+          <element id="library" level="project" name="Maven: org.codehaus.jackson:jackson-xc:1.9.2" />
+          <element id="library" level="project" name="Maven: javax.inject:javax.inject:1" />
+          <element id="library" level="project" name="Maven: com.microsoft.azure:adal4j:1.0.0" />
+          <element id="library" level="project" name="Maven: com.google.code.gson:gson:2.2.4" />
+          <element id="archive" name="Strategy.Cache-1.0-SNAPSHOT.jar">
+            <element id="module-output" name="Strategy.Cache" />
+          </element>
+          <element id="archive" name="Strategy.Session-1.0-SNAPSHOT.jar">
+            <element id="module-output" name="Strategy.Session" />
+          </element>
+          <element id="archive" name="Data-1.0-SNAPSHOT.jar">
+            <element id="module-output" name="Data" />
+          </element>
+          <element id="archive" name="Services-1.0-SNAPSHOT.jar">
+            <element id="module-output" name="Services" />
+          </element>
+          <element id="library" level="project" name="Maven: net.sf.ehcache:ehcache:2.10.3" />
+          <element id="archive" name="Strategy.Config-1.0-SNAPSHOT.jar">
+            <element id="module-output" name="Strategy.Config" />
+          </element>
+          <element id="library" level="project" name="Maven: javax.servlet:servlet-api:2.5" />
+          <element id="archive" name="Strategy.Log-1.0-SNAPSHOT.jar">
+            <element id="module-output" name="Strategy.Log" />
+          </element>
+          <element id="archive" name="Strategy.SMS-1.0-SNAPSHOT.jar">
+            <element id="module-output" name="Strategy.SMS" />
+          </element>
+          <element id="archive" name="Strategy.Email-1.0-SNAPSHOT.jar">
+            <element id="module-output" name="Strategy.Email" />
+          </element>
+        </element>
+      </element>
+      <element id="directory" name="META-INF">
+        <element id="file-copy" path="$PROJECT_DIR$/Presentation/Web/target/Web/META-INF/MANIFEST.MF" />
+      </element>
+      <element id="javaee-facet-resources" facet="Web/web/Web" />
+    </root>
+  </artifact>
+</component>

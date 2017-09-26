@@ -1,0 +1,43 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="CompilerConfiguration">
+    <annotationProcessing>
+      <profile name="Maven default annotation processors profile" enabled="true">
+        <sourceOutputDir name="target/generated-sources/annotations" />
+        <sourceTestOutputDir name="target/generated-test-sources/test-annotations" />
+        <outputRelativeToContentRoot value="true" />
+        <module name="Core" />
+        <module name="Data" />
+        <module name="Services" />
+        <module name="Strategy.Cache" />
+        <module name="Strategy.Config" />
+        <module name="Strategy.Email" />
+        <module name="Strategy.Log" />
+        <module name="Strategy.RDBS" />
+        <module name="Strategy.Session" />
+        <module name="Strategy.SMS" />
+        <module name="Web" />
+        <module name="Web.Admin" />
+        <module name="Web.Framework" />
+        <module name="Web.Mobile" />
+      </profile>
+    </annotationProcessing>
+    <bytecodeTargetLevel>
+      <module name="Core" target="1.8" />
+      <module name="Data" target="1.8" />
+      <module name="Messenger" target="1.8" />
+      <module name="Services" target="1.8" />
+      <module name="Strategy.Cache" target="1.8" />
+      <module name="Strategy.Config" target="1.8" />
+      <module name="Strategy.Email" target="1.8" />
+      <module name="Strategy.Log" target="1.8" />
+      <module name="Strategy.RDBS" target="1.8" />
+      <module name="Strategy.Session" target="1.8" />
+      <module name="Strategy.SMS" target="1.8" />
+      <module name="Web" target="1.8" />
+      <module name="Web.Admin" target="1.8" />
+      <module name="Web.Framework" target="1.8" />
+      <module name="Web.Mobile" target="1.8" />
+    </bytecodeTargetLevel>
+  </component>
+</project>

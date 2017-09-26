@@ -1,0 +1,115 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<!--
+  ~ Copyright (C) 2017.
+  ~ 用于JAVA项目开发
+  ~ 重庆青沃科技有限公司 版权所有
+  ~ Copyright © 2017.  CqingWo Systems Incorporated. All rights reserved.
+  -->
+
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.cqwo.strategy.rdbs.dao.UserDetailDao">
+
+
+    <!--获得用户详细信息表数量-->
+    <select id="GetUserdetailCount" parameterType="String" resultType="com.cqwo.core.domain.UserDetailInfo">
+        SELECT COUNT(uid) FROM W_userdetails
+        <if test="condition != null and condition != ''">
+            WHERE #{condition}
+        </if>
+    </select>
+
+
+    <!--创建一条用户详细信息表数据-->
+    <insert id="CreateOauth" parameterType="com.cqwo.core.domain.UserDetailInfo">
+		INSERT INTO [W_userdetails]( 
+		[lastvisittime],		 
+		[lastvisitip],		 
+		[lastvisitrgid],		 
+		[registertime],		 
+		[registerip],		 
+		[registerrgid],		 
+		[gender],		 
+		[realname],		 
+		[bday],		 
+		[idcard],		 
+		[regionid],		 
+		[address],		 
+		[bio]		 
+		)VALUES( 
+		#{lastvisittime},		 
+		#{lastvisitip},		 
+		#{lastvisitrgid},		 
+		#{registertime},		 
+		#{registerip},		 
+		#{registerrgid},		 
+		#{gender},		 
+		#{realname},		 
+		#{bday},		 
+		#{idcard},		 
+		#{regionid},		 
+		#{address},		 
+		#{bio}		 
+		)  
+    </insert>
+
+
+    <!--更新一条用户详细信息表数据-->
+    <update id="UpdateUserdetail" parameterType="com.cqwo.core.domain.UserDetailInfo">
+        UPDATE [W_userdetails] SET 
+		[lastvisittime] = #{lastvisittime},  
+		[lastvisitip] = #{lastvisitip},  
+		[lastvisitrgid] = #{lastvisitrgid},  
+		[registertime] = #{registertime},  
+		[registerip] = #{registerip},  
+		[registerrgid] = #{registerrgid},  
+		[gender] = #{gender},  
+		[realname] = #{realname},  
+		[bday] = #{bday},  
+		[idcard] = #{idcard},  
+		[regionid] = #{regionid},  
+		[address] = #{address},  
+		[bio] = #{bio}  
+        WHERE [uid]=@uid;
+    </update>
+
+
+    <!--删除一条用户详细信息表数据-->
+    <delete id="DeleteUserdetailByUid" parameterType="int">
+        delete from [W_userdetails] WHERE [uid] = #{uid}
+    </delete>
+
+
+    <!--批量删除一批用户详细信息表数据-->
+    <delete id="DeleteUserdetailListByUid" parameterType="String">
+        delete from [W_userdetails] WHERE [uid] in (#{uidList})
+    </delete>
+
+
+    <!--获得用户详细信息表一条记录-->
+    <select id="GetUserdetailByUid" parameterType="int" resultType="com.cqwo.core.domain.UserDetailInfo">
+        select *  from [W_userdetails] where [uid] = #{uid}
+    </select>
+
+
+    <!--获得获得用户详细信息表数据列表-->
+    <select id="GetUserdetailList" resultType="com.cqwo.core.domain.UserDetailInfo">
+        SELECT TOP #{pageSize} *
+        FROM [W_userdetails]
+        WHERE [uid] NOT IN
+        (SELECT TOP #{count} [uid] FROM [W_userdetails]
+        <if test="condition != null and condition != ''">
+            WHERE #{condition}
+        </if>
+        order by [uid])
+        <if test="condition != null and condition != ''">
+            AND #{condition}
+        </if>
+        order by [uid]
+    </select>
+
+
+</mapper>
+
+

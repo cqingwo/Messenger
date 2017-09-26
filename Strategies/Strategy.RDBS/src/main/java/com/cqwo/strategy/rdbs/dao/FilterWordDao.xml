@@ -1,0 +1,81 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<!--
+  ~ Copyright (C) 2017.
+  ~ 用于JAVA项目开发
+  ~ 重庆青沃科技有限公司 版权所有
+  ~ Copyright © 2017.  CqingWo Systems Incorporated. All rights reserved.
+  -->
+
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.cqwo.strategy.rdbs.dao.FilterWordDao">
+
+
+    <!--获得筛选词表数量-->
+    <select id="GetFilterWordCount" parameterType="String" resultType="int">
+        SELECT COUNT(id) FROM [W_filterwords]
+        <if test="condition != null and condition != ''">
+            WHERE #{condition}
+        </if>
+    </select>
+
+
+    <!--创建一条筛选词表数据-->
+    <insert id="CreateFilterWord" parameterType="com.cqwo.core.domain.FilterWordInfo">
+		INSERT INTO [W_filterwords]( 
+		[match],		 
+		[replace]		 
+		)VALUES( 
+		#{match},		 
+		#{replace}		 
+		)  
+    </insert>
+
+
+    <!--更新一条筛选词表数据-->
+    <update id="UpdateFilterWord" parameterType="com.cqwo.core.domain.FilterWordInfo">
+        UPDATE [W_filterwords] SET 
+		[match] = #{match},  
+		[replace] = #{replace}  
+        WHERE [id]=@id;
+    </update>
+
+
+    <!--删除一条筛选词表数据-->
+    <delete id="DeleteFilterWordById" parameterType="int">
+        delete from [W_filterwords] WHERE [id] = #{id}
+    </delete>
+
+
+    <!--批量删除一批筛选词表数据-->
+    <delete id="DeleteFilterWordByIdList" parameterType="String">
+        delete from [W_filterwords] WHERE [id] in (${idList})
+    </delete>
+
+
+    <!--获得筛选词表一条记录-->
+    <select id="GetFilterWordById" parameterType="int" resultType="com.cqwo.core.domain.FilterWordInfo">
+        select top 1 *  from [W_filterwords] where [id] = #{id}
+    </select>
+
+
+    <!--获得获得筛选词表数据列表-->
+    <select id="GetFilterWordList" resultType="com.cqwo.core.domain.FilterWordInfo">
+        SELECT TOP ${pageSize} *
+        FROM [W_filterwords]
+        WHERE [id] NOT IN
+        (SELECT TOP ${count} [id] FROM [W_filterwords]
+        <if test="condition != null and condition != ''">
+            WHERE ${condition}
+        </if>
+        order by [id])
+        <if test="condition != null and condition != ''">
+            AND ${condition}
+        </if>
+        order by [id]
+    </select>
+
+
+</mapper>
+
