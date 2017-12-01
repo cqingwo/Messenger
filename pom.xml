@@ -5,7 +5,7 @@
     <modelVersion>4.0.0</modelVersion>
 
     <groupId>com.cqwo</groupId>
-    <artifactId>Messenger</artifactId>
+    <artifactId>WoFramework</artifactId>
     <packaging>pom</packaging>
     <version>1.0-SNAPSHOT</version>
     <modules>
@@ -112,6 +112,27 @@
                 <version>1.4</version>
             </dependency>
 
+            <!--hibernate-->
+
+            <dependency>
+                <groupId>org.hibernate</groupId>
+                <artifactId>hibernate-core</artifactId>
+                <version>4.2.4.Final</version>
+            </dependency>
+
+            <!-- https://mvnrepository.com/artifact/org.hibernate/hibernate-commons-annotations -->
+            <dependency>
+                <groupId>org.hibernate.common</groupId>
+                <artifactId>hibernate-commons-annotations</artifactId>
+                <version>4.0.2.Final</version>
+            </dependency>
+
+            <dependency>
+                <groupId>org.springframework</groupId>
+                <artifactId>spring-orm</artifactId>
+                <version>${spring.version}</version>
+            </dependency>
+
             <!--spring-jdbc-->
 
             <dependency>
@@ -131,6 +152,7 @@
                 <artifactId>mssql-jdbc</artifactId>
                 <version>6.1.0.jre8</version>
             </dependency>
+
 
             <dependency>
                 <groupId>org.springframework</groupId>
@@ -260,25 +282,22 @@
     <!--配置资源文件和maper的打包位置-->
     <build>
     <resources>
-        <resource>
-            <!--注意修改路径-->
-            <directory>src/main/resources</directory>
-            <includes>
-                <include>*.xml</include>
-                <include>*.properties</include>
-            </includes>
-        </resource>
-        <resource>
-            <!--注意修改路径-->
-            <directory>src/main/java/com/cqwo/strategy/rdbs/dao</directory>
-            <includes>
-                <include>*.xml</include>
-            </includes>
-            <!--打包位置-->
-            <targetPath>com/cqwo/strategy/rdbs/dao</targetPath>
-        </resource>
-
-    </resources>
+            <resource>
+                <!--注意修改路径-->
+                <directory>src/main/resources</directory>
+                <includes>
+                    <include>*.xml</include>
+                    <include>*.properties</include>
+                </includes>
+            </resource>
+            <resource>
+                <!--注意修改路径-->
+                <directory>src/main/java/com.cqwo.core.domain</directory>
+                <includes>
+                    <include>*.xml</include>
+                </includes>
+                <targetPath>com.cqwo.core.domain</targetPath>
+            </resource>
+        </resources>
     </build>
-
 </project>

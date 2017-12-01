@@ -38,6 +38,7 @@
       <module name="Web.Admin" target="1.8" />
       <module name="Web.Framework" target="1.8" />
       <module name="Web.Mobile" target="1.8" />
+      <module name="WoFramework" target="1.8" />
     </bytecodeTargetLevel>
   </component>
 </project>
